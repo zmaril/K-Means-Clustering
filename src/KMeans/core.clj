@@ -12,9 +12,7 @@
   (let [lines   (with-open [rdr (clojure.java.io/reader file-name)]
                   (reduce conj [] (line-seq rdr)))
         ;;Slipt everything up by \t's
-        split-lines (map (partial split #"\t") lines)
-        
-        ]
+        split-lines (map (partial split #"\t") lines)]
     ;;Create the list of compaines to work with.
     (map #(assoc {}:name (first %)
             :timings (map (fn [n] (Float/parseFloat n)) (rest %)))
